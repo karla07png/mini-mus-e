@@ -1,14 +1,218 @@
 
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini-Musée IoT</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1220">
+  <title>ÉCRIN | Musée connecté</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
 </head>
 <body>
-    <h1>Bienvenue dans mon mini-musée !</h1>
-    <h2>Surveillance IoT</h2>
-    <p>Mon système d'alarme est prêt.</p>
+
+  <header class="header">
+    <a href="#" class="logo">
+      <span class="logo-icon">◆</span>
+      ÉCRIN<span class="logo-dot">.</span>
+    </a>
+
+    <nav class="navigation">
+      <a href="#accueil">Accueil</a>
+      <a href="#surveillance">Surveillance</a>
+      <a href="#historique">Historique</a>
+    </nav>
+
+    <div class="header-status">
+      <span class="status-dot"></span>
+      <span id="headerStatus">Système actif</span>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero" id="accueil">
+      <div class="hero-content">
+        <div class="eyebrow">MUSÉE INTELLIGENT · ESP32</div>
+
+        <h1>La beauté mérite<br>
+          <span>d'être protégée.</span>
+        </h1>
+
+        <p>
+          Bienvenue dans ÉCRIN, votre système intelligent
+          de surveillance d'œuvres précieuses.
+          Gardez un œil sur votre collection en temps réel.
+        </p>
+
+        <a href="#surveillance" class="primary-btn">
+          Accéder au tableau de bord
+          <span>↗</span>
+        </a>
+      </div>
+
+      <div class="hero-art">
+        <div class="diamond-glow"></div>
+        <div class="diamond">💎</div>
+        <div class="art-label">PIÈCE Nº 001 · DIAMANT ÉTERNITÉ</div>
+      </div>
+    </section>
+
+    <section class="dashboard" id="surveillance">
+
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">CENTRE DE CONTRÔLE</div>
+          <h2>Tableau de bord</h2>
+          <p>Surveillance de votre collection en temps réel.</p>
+        </div>
+        <div class="date" id="currentDate"></div>
+      </div>
+
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <span class="stat-label">ÉTAT DU SYSTÈME</span>
+          <div class="stat-value" id="systemState">ACTIF</div>
+          <span class="stat-detail" id="systemDetail">
+            Surveillance en cours
+          </span>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-label">ÉTAT DU DIAMANT</span>
+          <div class="stat-value" id="diamondState">SÉCURISÉ</div>
+          <span class="stat-detail" id="diamondDetail">
+            Pièce présente dans la vitrine
+          </span>
+        </div>
+
+        <div class="stat-card">
+          <span class="stat-label">ALERTES DÉTECTÉES</span>
+          <div class="stat-value" id="alertCount">0</div>
+          <span class="stat-detail">
+            Depuis l'ouverture de cette page
+          </span>
+        </div>
+
+      </div>
+
+      <div class="content-grid">
+
+        <div class="showcase-card">
+          <div class="card-top">
+            <div>
+              <span class="eyebrow">COLLECTION PERMANENTE</span>
+              <h3>Le diamant Éternité</h3>
+            </div>
+            <span class="piece-badge">PIÈCE 001</span>
+          </div>
+
+          <div class="showcase">
+            <div class="showcase-light"></div>
+            <div class="showcase-diamond" id="showcaseDiamond">💎</div>
+            <div class="pedestal-top"></div>
+            <div class="pedestal"></div>
+          </div>
+
+          <div class="piece-info">
+            <div>
+              <span class="small-label">STATUT DE LA PIÈCE</span>
+              <strong id="pieceStatus">● En sécurité</strong>
+            </div>
+            <div>
+              <span class="small-label">CAPTEUR</span>
+              <strong id="sensorStatus">Mode simulation</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="control-card">
+          <span class="eyebrow">SÉCURITÉ INTELLIGENTE</span>
+          <h3>Centre de surveillance</h3>
+
+          <div class="security-display" id="securityDisplay">
+            <div class="security-icon" id="securityIcon">✓</div>
+            <h4 id="securityTitle">Tout est sécurisé</h4>
+            <p id="securityMessage">
+              Aucun incident détecté.
+              Votre collection est sous surveillance.
+            </p>
+          </div>
+
+          <div class="control-info">
+            <span>Surveillance</span>
+            <strong id="monitoringLabel">Activée</strong>
+          </div>
+
+          <button class="danger-btn" id="simulateBtn">
+            🚨 Simuler un vol
+          </button>
+
+          <button class="secondary-btn" id="resetBtn">
+            Réinitialiser l'alarme
+          </button>
+
+          <button class="outline-btn" id="toggleBtn">
+            Désactiver la surveillance
+          </button>
+
+          <p class="simulation-note">
+            Mode démonstration : les alertes sont simulées
+            dans ce navigateur. Connexion ESP32 à venir.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="history-section" id="historique">
+      <div class="section-heading">
+        <div>
+          <div class="eyebrow">JOURNAL DE SÉCURITÉ</div>
+          <h2>Historique des événements</h2>
+          <p>Les dernières activités du système.</p>
+        </div>
+        <button class="clear-btn" id="clearHistoryBtn">
+          Effacer l'historique
+        </button>
+      </div>
+
+      <div class="history-card">
+        <div class="history-list" id="historyList"></div>
+      </div>
+    </section>
+
+    <section class="about-section">
+      <div>
+        <span class="eyebrow">TECHNOLOGIE CONNECTÉE</span>
+        <h2>Un musée. Une protection intelligente.</h2>
+        <p>
+          ÉCRIN est un projet IoT utilisant un microcontrôleur
+          ESP32, des capteurs et une interface Web pour
+          surveiller les objets précieux d'un musée miniature.
+        </p>
+      </div>
+
+      <div class="tech-tags">
+        <span>ESP32</span>
+        <span>Wi-Fi</span>
+        <span>MQTT</span>
+        <span>JavaScript</span>
+        <span>IoT</span>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-logo">◆ ÉCRIN<span>.</span></div>
+    <p>Musée connecté · Projet Internet des objets</p>
+    <p>© 2026 ÉCRIN</p>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 </body>
 </html>
